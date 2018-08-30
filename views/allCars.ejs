@@ -1,0 +1,128 @@
+<html>
+<head>
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+          crossorigin="anonymous">
+</head>
+
+<!--
+<body style=" border-radius: 5px;
+background-image:url('https://images.pexels.com/photos
+/63294/autos-technology-vw-multi-storey-car-park-63294.
+jpeg?auto=compress&cs=tinysrgb&h=650&w=940')"
+>
+-->
+
+<body style=" border-radius: 5px;background-color: lightgray ">
+<!--begin -->
+<div style="padding: 50px 120px 120px 120px">
+
+    <h3 id="msg" style="color: #0db6ff;font-size: 35px"> <%=msg%></h3>
+    <!--get car by id -->
+   <form name="form1" method="POST" action="/getCarByid" >
+            <input  list="listCars" name="cid" placeholder="car id .." required>
+       <datalist id="listCars">
+           <%for(var i=0;i<datas.length;i++){%>
+           <option value="<%=datas[i]['ID']%>">
+           <%}%>
+       </datalist>
+            <input style="border-radius: 5px" type="submit" class="btn btn-success" value="GetCar" oninput="validateForm()" />
+    </form>
+
+
+    <div  >
+        <!--add a car-->
+        <form   name="form1" method="GET" action="/addCar" >
+            <input style="border-radius: 5px" type="submit" class="btn btn-warning" value="Add a Car"/>
+        </form>
+    </div>
+
+<div>
+
+    <table cellspacing="50">
+        <tr>
+            <th>
+                <!--get all cars-->
+                <form name="form1" method="POST"  action="/getAllCars">
+                    <input   style="border-radius: 5px"  type="submit" value="Show All Cars" class="btn btn-info"/>
+                </form>
+            </th>
+        </tr>
+        <tr>
+            <th>
+                <!--show charts-->
+                <form name="form4" method="POST"  action="/goToCharts">
+                    <input   style="border-radius: 5px"  type="submit" value="Show Charts" class="btn btn-primary"/>
+                </form>
+            </th>
+        </tr>
+    </table>
+</div>
+
+
+
+
+
+    <table class="table table-hover" style="align:center;font-family: 'arial';background-color: rgba(123,162,137,0.8);
+border-radius: 5px">
+        <tr>
+            <th>ID</th>
+            <th>MPG</th>
+            <th>CYL</th>
+            <th>ENG</th>
+            <th>WGT</th>
+            <th></th>
+            <th></th>
+
+        </tr>
+        <% for(var i=0; i < datas.length; i++){%>
+  <tr style= " background-image: url('http://www.taniakugai.com/img/fog_t_03.png');
+border-radius: 5px">
+
+            <td><h4> <%= datas[i].ID %></h4>
+            </td>
+            <td><h4> <%= datas[i].MPG %></h4>  </td>
+            <td><h4> <%= datas[i].CYL  %></h4></td>
+            <td> <h4> <%= datas[i].ENG %></h4> </td>
+            <td> <h4> <%= datas[i].WGT %></h4></td>
+            <td> <h4>
+                    <form name="form1" method="POST"  action="/editCar">
+                        <input  type="text"
+                                name="idToEdit"
+                                value=<%= datas[i].ID %>
+                                hidden />
+                        <input style="border-radius: 5px" type="submit" value="Edit" class="btn btn-info"/>
+                    </form>
+
+                </h4></td>
+            <td> <h4>
+                    <form name="form1" method="POST"  action="/deleteCar">
+                        <input  type="text"
+                                name="idToDelete"
+                                value=<%= datas[i].ID %>
+                               hidden />
+                        <input style="border-radius: 5px"  type="submit" value="Delete" class="btn btn-danger"/>
+                    </form>
+                </h4></td>
+        </tr>
+        <%}%>
+    </table>
+
+
+
+
+</div>
+
+<!--end page-->
+<script>
+    function validateForm() {
+        var x = document.forms["form1"]["cid"].value;
+        if (((typeof x ) != "number"  ) ||(i==="")){
+            alert("the car id must be a number");
+            return false;
+        }
+    }
+</script>
+</body>
+</html>

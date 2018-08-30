@@ -1,0 +1,58 @@
+
+<html>
+<head>
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+          crossorigin="anonymous">
+</head>
+<body>
+<h3 id="msg" style="color: #ff92ad;font-size: 35px"> <%=msg%></h3>
+
+<!--<p id="secretMsg"></p>-->
+
+<div>
+
+    <form name="form2" method="POST"  action="/saveEditedCar">
+
+    <table class="table table-hover" style="align:center;font-family: 'arial';background-color: #879aed">
+        <tr>
+            <th>ID</th>
+            <th>MPG</th>
+            <th>CYL</th>
+            <th>ENG</th>
+            <th>WGT</th>
+
+        </tr>
+        <tr>
+
+    <td>
+        <h4 style="color: lightblue;font-style: italic"> <input  type="text"    name="IDname"  value= <%= data.ID%>  readonly> </h4>
+    </td>
+    <td>
+        <h4> <input type="text"   name="MPGname"  placeholder= <%= data.MPG %> required> </h4>
+    </td>
+    <td>
+         <h4><input type="text"   name="CYLname"  placeholder= <%= data.CYL %> required> </h4>
+    </td>
+    <td>
+         <h4> <input type="text"  name="ENGname"  placeholder= <%= data.ENG %> required></h4>
+    </td>
+    <td>
+         <h4><input type="text"   name="WGTname"  placeholder= <%= data.WGT %> required></h4>
+    </td>
+
+        </tr>
+
+    </table>
+        <input  type="submit" value="Save" class="btn btn-success" />
+
+    </form>
+</div>
+<script>
+
+</script>
+</body>
+
+</html>
+

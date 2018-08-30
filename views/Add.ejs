@@ -1,0 +1,55 @@
+
+<html>
+<head>
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+          crossorigin="anonymous">
+</head>
+<body>
+<h3 id="msg" style="color: #ff92ad;font-size: 35px"> <%=msg%></h3>
+
+
+
+<div>
+
+    <form name="form3" method="POST"  action="/saveAddedCar">
+
+    <table class="table table-hover" style="align:center;font-family: 'arial';background-color: #879aed">
+        <tr>
+
+            <th>MPG</th>
+            <th>CYL</th>
+            <th>ENG</th>
+            <th>WGT</th>
+
+        </tr>
+        <tr>
+
+    <td>
+        <h4> <input type="text" data-filter='[0-9]'  name="MPGname"   required placeholder= <%= data.MPG %>  > </h4>
+    </td>
+    <td>
+         <h4><input type="text"  data-filter='[0-9]' name="CYLname"  required placeholder= <%= data.CYL %> > </h4>
+    </td>
+    <td>
+         <h4> <input type="text" data-filter='[0-9]' name="ENGname"  required placeholder= <%= data.ENG %> ></h4>
+    </td>
+    <td>
+         <h4><input type="text"  data-filter='[0-9]' name="WGTname"   required placeholder= <%= data.WGT %> ></h4>
+    </td>
+
+        </tr>
+
+    </table>
+        <input  type="submit" value="Save" class="btn btn-success" />
+
+    </form>
+</div>
+<script>
+
+</script>
+</body>
+
+</html>
+

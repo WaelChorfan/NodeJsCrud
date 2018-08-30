@@ -1,0 +1,33 @@
+{
+  "name": "pug-express",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo this is a test ",
+    "task1": "nodemon  API.js",
+    "task2": "nodemon CarsController.js",
+    "task3": "echo this task 3",
+    "parallel": "npm-run-all --parallel task1 task2  ",
+    "series": "npm-run-all task1 task2 ",
+    "start": "npm-run-all parallel"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "concurrently": "^4.0.1",
+    "ejs": "^2.6.1",
+    "express": "^4.16.3",
+    "html": "^1.0.0",
+    "localtunnel": "^1.9.0",
+    "mssql": "^4.1.0",
+    "path": "^0.12.7",
+    "reload": "^2.3.1",
+    "request": "^2.88.0",
+    "tedious": "^2.2.4"
+  },
+  "devDependencies": {
+    "npm-run-all": "^4.1.3"
+  }
+}

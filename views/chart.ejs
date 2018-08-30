@@ -1,0 +1,143 @@
+<html>
+<head>
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+          crossorigin="anonymous">
+    <script  src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.js"></script>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script><script src="chartScript"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+<body style=" padding:15px 80px 80px 80px;border-radius: 5px;background-color:lightgray">
+
+<!--get all cars-->
+<form name="formReturn" method="POST"  action="/getAllCars">
+    <input   style="border-radius: 5px"  type="submit" value="Show All Cars" class="btn btn-primary" />
+</form>
+
+
+
+
+<div align="center">
+    <!--show charts-->
+    <!--populate id values-->
+
+
+    <form   name="formChart" method="POST" action="/chartById" >
+        <h3>Choose Car By Number </h3>
+        <input list="listID"  id="input"  name="idCC" required>
+
+        <datalist   id="listID"  >
+            <%for(var i=0;i<cars.length;i++){%>
+            <option value="<%=cars[i]['ID']%>" class="form-control">
+                <%}%>
+        </datalist>
+        <input  id="getCar" type="submit" class="btn btn-info" value="GetCar"  style="display: none"/>
+
+    </form>
+
+    <form name="formCharts" method="GET"  action="/Charts">
+        <input   style="border-radius: 5px"  type="submit" value="Show id values" class="btn"/>
+    </form>
+</div>
+
+
+
+
+    <div class="form-group" align="center" style="padding-top: 30px ;padding-right: 500px;padding-left:500px">
+    <h4 align="center" style=" color: darkorchid;"><%=msg%></h4>
+<select class="form-control" id="pieType" onchange="chartDislay()">
+    <option value="bar">Bar Chart</option>
+    <option value="pie">Pie Chart</option>
+</select>
+</div>
+
+<div style="padding: 50px 80px 80px 80px;color: darkorchid;height: 800px;width: 800px" >
+    <canvas id="bar-chart" ></canvas>
+    <canvas id="pie-chart" ></canvas>
+</div>
+
+
+<script>
+
+var extoptions= {
+    title: {display: true,text: 'Cars characteristics'  }
+};
+var extData={
+    labels: ["MPG", "CYL", "ENG", "WGT"],
+    datasets: [
+        {label:"Bar Graph",
+            backgroundColor:
+                ["#ff2d12"
+                    ,"#82ff30"
+                    ,"#3d2bff"
+                    ,"#ffe100"
+                ],
+            data: [
+                <%= MPG%>
+                , <%= CYL%>
+                , <%= ENG/10%>
+                , <%= WGT/100%>
+            ]
+        }
+    ]
+};
+
+
+
+
+function chartDislay() {
+
+    var a=document.getElementById("pieType").value;
+    switch(a) {
+        case 'bar':
+            //bar
+            var ctx1 = document.getElementById("bar-chart").getContext('2d');
+            var barChart =new Chart(document.getElementById("bar-chart"), {
+                type :'bar',
+                data: extData,
+                options:extoptions
+            });
+
+            document.getElementById("bar-chart").style.display="block";
+            document.getElementById("pie-chart").style.display="none";
+            break;
+        case 'pie':
+//pie
+            var ctx2 = document.getElementById("pie-chart").getContext('2d');
+            var pieChart =new Chart(document.getElementById("pie-chart"), {
+                type :'pie',
+                data: extData,
+                options:extoptions
+            });
+            document.getElementById("bar-chart").style.display="none";
+            document.getElementById("pie-chart").style.display="block";
+
+
+            break;
+        default:
+            console.log("no selected chart type from list");
+    }
+};
+
+chartDislay();
+
+function pId() {
+    window.location = 'http://localhost:5656/Charts';
+}
+
+
+
+
+var input = document.getElementById("input");
+input.addEventListener("keyup", function(event) {
+    event.preventDefault();
+        document.getElementById("getCar").click();
+});
+
+
+    </script>
+
+</body>
+
+</html>
