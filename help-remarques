@@ -1,0 +1,46 @@
+node js 
+npm install --save express
+
+express ; to make apps
+
+mysql ; to connect to db 
+
+npm install -g  nodemon : 
+runs the  app whenever we make 
+ a  change in the js script
+
+intall is i  : npm i mysql
+
+npm install givenPackage (it installs the newest version)
+
+see how stuff works ; for example mysql https://www.npmjs.com/package/mysql
+
+see installed packages : npm ls --depth=0 or add -g
+
+!!!! req ,res and not res, req
+
+package http to work as web service 
+
+
+cors  https://developer.mozilla.org/fr/docs/Web/HTTP/CORS
+chart js 
+app.use(express.static('./')); and use localhost:300/filename/script.js
+
+
+HyyperImportant:module.exports = {
+  func1: function () {
+    // func1 impl
+  },
+  func2: function () {
+    // func2 impl
+  }
+};
+In the other .js files, you can “include” the ‘common.js’ by
+
+var common = require('./common');
+In the following code, the functions can be used like
+
+common.func1();
+
+
+lt --port 8000
