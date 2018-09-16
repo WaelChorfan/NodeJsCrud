@@ -1,5 +1,5 @@
 # NodeJsCrud
-A simple crud app with Node js ,  MSSQL & chart js
+Crud API app with Node js and creating  charts
 
 First,restore the MS-SQL database "TestingDB" from its backup file 
 
